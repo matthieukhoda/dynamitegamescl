@@ -2,17 +2,21 @@ index:
    path: /
    controller: App\Controller\DefaultController::index
 
+home:
+   path: /home
+   controller: App\Controller\HomeController::index
+
 games:
    path: /games
    controller: App\Controller\GamesController::index
 
-new:
-   path: /new
-   controller: App\Controller\NewController::index
+# new:
+#    path: /games
+#    controller: App\Controller\GamesController::index
 
-console:
-   path: /console
-   controller: App\Controller\ConsoleController::index
+plateform:
+   path: /plateform
+   controller: App\Controller\PlateformController::index
 
 category:
    path: /category
