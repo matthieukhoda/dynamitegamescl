@@ -6,6 +6,8 @@ use App\Repository\GamesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=GamesRepository::class)
@@ -49,6 +51,8 @@ class Games
      */
     private $categories;
 
+
+
     /**
      * @ORM\ManyToMany(targetEntity=Plateform::class, mappedBy="games")
      */
@@ -58,6 +62,17 @@ class Games
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="game", orphanRemoval=true)
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imageFile;
+
 
     public function __construct()
     {
@@ -134,10 +149,14 @@ class Games
     /**
      * @return Collection|Category[]
      */
+
+
+
     public function getCategories(): Collection
     {
         return $this->categories;
     }
+
 
     public function addCategory(Category $category): self
     {
@@ -213,5 +232,34 @@ class Games
         }
 
         return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(string $imageFile): self
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }

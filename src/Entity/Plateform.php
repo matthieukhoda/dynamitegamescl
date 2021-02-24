@@ -39,7 +39,7 @@ class Plateform
         return $this->id;
     }
 
-    public function getPlateforme(): ?string
+    public function getPlateforme(): string
     {
         return $this->plateforme;
     }
@@ -73,5 +73,11 @@ class Plateform
         $this->games->removeElement($game);
 
         return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->plateforme;
     }
 }

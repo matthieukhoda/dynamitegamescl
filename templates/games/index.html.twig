@@ -1,43 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Games index{% endblock %}
+{% block title %}Games index
+{% endblock %}
 
 {% block body %}
-    <h1>Games index</h1>
+	<h1>Jeux</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>EanCode</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for game in games %}
-            <tr>
-                <td>{{ game.id }}</td>
-                <td>{{ game.title }}</td>
-                <td>{{ game.description }}</td>
-                <td>{{ game.price }}</td>
-                <td>{{ game.stock }}</td>
-                <td>{{ game.eanCode }}</td>
-                <td>
-                    <a href="{{ path('games_show', {'id': game.id}) }}">show</a>
-                    <a href="{{ path('games_edit', {'id': game.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				{# <th>Id</th> #}
+				<th>Tous les jeux</th>
+				<th>Description</th>
+				<th>Prix</th>
+				<th>Stock</th>
+				<th>Code EAN</th>
+				<th>Plateforme</th>
+				<th>Catégorie</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<a href="{{ path('games_new') }}">Ajouter un jeu</a>
+			{% for game in games %}
+				<tr>
+					{# <td>{{ game.id }}</td> #}
+					<td>{{ game.title }}</td>
+					<td>{{ game.description }}</td>
+					<td>{{ game.price }}</td>
+					<td>{{ game.stock }}</td>
+					<td>{{ game.eanCode }}</td>
+					<td>
+						{% for plateform in game.plateforms %}
+							<span>{{ plateform.title }}</span>
+						{% endfor %}
+					</td>
+					<td></td>
+					<td>
+						<a href="{{ path('games_show', {'id': game.id}) }}">Voir</a>
+						<a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('games_new') }}">Create new</a>
+
 {% endblock %}

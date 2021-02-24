@@ -13,7 +13,7 @@ class PlateformType extends AbstractType
     {
         $builder
             ->add('plateforme')
-            ->add('games')
+            // ->add('games')
         ;
     }
 

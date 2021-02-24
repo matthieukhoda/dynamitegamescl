@@ -1,35 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Plateform index{% endblock %}
+{% block title %}Plateform index
+{% endblock %}
 
 {% block body %}
-    <h1>Plateform index</h1>
+	<h1>Les consoles</h1>
+	<a href="{{ path('plateform_new') }}">Créer nouvelle console</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Plateforme</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for plateform in plateforms %}
-            <tr>
-                <td>{{ plateform.id }}</td>
-                <td>{{ plateform.plateforme }}</td>
-                <td>
-                    <a href="{{ path('plateform_show', {'id': plateform.id}) }}">show</a>
-                    <a href="{{ path('plateform_edit', {'id': plateform.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table">
+		<thead>
+			<tr>
+				{# <th>Id</th> #}
+				<th>Toutes les plateformes</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for plateform in plateforms %}
+				<tr>
+					{# <td>{{ plateform.id }}</td> #}
+					<td>{{ plateform.plateforme }}</td>
+					<td>
+						<a href="{{ path('plateform_show', {'id': plateform.id}) }}">Voir</a>
+						<a href="{{ path('plateform_edit', {'id': plateform.id}) }}">Editer</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('plateform_new') }}">Create new</a>
+
 {% endblock %}

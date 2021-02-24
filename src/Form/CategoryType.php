@@ -13,7 +13,7 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('games')
+            // ->add('games')
         ;
     }
 

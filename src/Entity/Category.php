@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+
+
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -28,6 +32,8 @@ class Category
      * @ORM\ManyToMany(targetEntity=Games::class, inversedBy="categories")
      */
     private $games;
+
+
 
     public function __construct()
     {
@@ -73,5 +79,10 @@ class Category
         $this->games->removeElement($game);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 }

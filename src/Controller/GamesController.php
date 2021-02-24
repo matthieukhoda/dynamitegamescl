@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Games;
 use App\Form\GamesType;
+use App\Repository\CategoryRepository;
 use App\Repository\GamesRepository;
+use App\Repository\PlateformRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +20,13 @@ class GamesController extends AbstractController
     /**
      * @Route("/", name="games_index", methods={"GET"})
      */
-    public function index(GamesRepository $gamesRepository): Response
+    public function index(GamesRepository $gamesRepository, CategoryRepository $categoryRepository, PlateformRepository $plateformRepository): Response
     {
-        return $this->render('games/index.html.twig', [
-            'games' => $gamesRepository->findAll(),
+        $games = $gamesRepository->findAll();
+        
+        return $this->render('games/index.html.twig',  [
+            'games' => $games,
+
         ]);
     }
 
@@ -83,7 +88,7 @@ class GamesController extends AbstractController
      */
     public function delete(Request $request, Games $game): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$game->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $game->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($game);
             $entityManager->flush();
