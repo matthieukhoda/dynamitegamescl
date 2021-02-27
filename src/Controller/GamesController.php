@@ -23,7 +23,7 @@ class GamesController extends AbstractController
     public function index(GamesRepository $gamesRepository, CategoryRepository $categoryRepository, PlateformRepository $plateformRepository): Response
     {
         $games = $gamesRepository->findAll();
-        
+
         return $this->render('games/index.html.twig',  [
             'games' => $games,
 
