@@ -6,11 +6,13 @@ use App\Repository\GamesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use FFI;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=GamesRepository::class)
+ * @Vich\Uploadable
  */
 class Games
 {
@@ -69,7 +71,12 @@ class Games
     private $imageName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @Vich\UploadableField(mapping="article_cover", fileNameProperty="imageName")
      */
     private $imageFile;
 
@@ -246,17 +253,40 @@ class Games
         return $this;
     }
 
-    public function getImageFile(): ?string
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    public function setImageFile(string $imageFile): self
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
         return $this;
     }
+
+    // public function setImageFile(string $imageFile): self
+    // {
+    //     $this->imageFile = $imageFile;
+
+    //     return $this;
+    // }
 
     public function __toString()
     {
