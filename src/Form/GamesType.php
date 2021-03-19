@@ -24,11 +24,7 @@ class GamesType extends AbstractType
             ->add('description', TextareaType::class, ['label' => 'Description'])
             ->add('price', TextType::class, ['label' => 'Prix'])
             ->add('stock', TextType::class, ['label' => 'Stock'])
-            // ->add('eanCode', TextType::class, ['label' => 'Code EAN'])
             ->add('imageFile', VichImageType::class,  ['label' => "Couverture"])
-            // ->add('updatedAt', DateTimeType::class, [
-            //     'date_widget' => 'single_text'
-            // ])
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'title',

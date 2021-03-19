@@ -281,12 +281,6 @@ class Games
         return $this;
     }
 
-    // public function setImageFile(string $imageFile): self
-    // {
-    //     $this->imageFile = $imageFile;
-
-    //     return $this;
-    // }
 
     public function __toString()
     {
