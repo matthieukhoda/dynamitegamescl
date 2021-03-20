@@ -13,3 +13,9 @@ plateform:
 category:
   path: /category
   controller: App\Controller\CategoryController::index
+
+front:
+  path: /front
+  controller: App\Controller\DefaultController::index
+
+

@@ -1,0 +1,30 @@
+body {
+  background-color: rgba(0, 0, 0, 0.034);
+}
+
+img {
+  height: 170px;
+  width: 120px;
+}
+
+#header {
+  background-color: #0fa704;
+  width: 100%;
+  padding: 1px 0;
+  height: 200px;
+}
+
+#dglogo {
+  width: 55%;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+#menu {
+  float: left;
+  width: 240px;
+  background-color: #990066;
+  padding: 1px 0;
+  height: 600px;
+}
