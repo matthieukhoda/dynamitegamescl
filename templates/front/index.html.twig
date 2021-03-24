@@ -9,32 +9,22 @@
 	</div>
 
 	<div id="menu"></div>
-	<table class="table">
-		<h1>Derniers arrivages</h1>
+	<h1>Derniers arrivages</h1>
 
-		<div class="container">
-			{% for game in games %}
-				<tr>
-					<td>{{ game.title }}</td>
-				</tr>
+	<div class="table">
 
-				<td>
-					<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
-				</td>
+		{% for game in games %}
+			<p>{{ game.title }}</p>
 
-				<tr>
-					<td>{{ game.price }}€
-						<a href="{{ path('games_show', {'id': game.id}) }}">Go !</a>
-					</td>
-				</tr>
+			<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
+
+			<p>{{ game.price }}€
+				<a href="{{ path('games_show', {'id': game.id}) }}">Go !</a>
+			</p>
 
 
-			{% else %}
-				<tr>
-					<td colspan="7">no records found</td>
-				</tr>
-			{% endfor %}
-		</div>
+		{% endfor %}
+	</div>
 
-	</table>
+	<div id="footer"></div>
 {% endblock %}
