@@ -1,30 +1,298 @@
 {% block title %}{% endblock %}
 
-<link rel="stylesheet" href="{{ asset('style.css') }}"> {% block stylesheets %}{% endblock %}
-
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% block body %}
 
 	<div id="header">
 		<img id="dglogo" src="{{asset('assets/images/articles/dglogo.png') }}"/>
+
+		<form id="search" class="form-inline my-2 my-lg-0">
+			<input id="go" class="form-control mr-sm-2" type="text" placeholder="Que cherchez-vous ?">
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Go !</button>
+		</form>
+		<a href="#" id="mag" class="btn btn-lg btn-success">
+			<span class="glyphicon glyphicon-map-marker"></span>
+			Votre magasin de Clermont</a>
+		<a href="#" id="contact" class="btn btn-lg btn-success">
+			<span class="glyphicon glyphicon-send"></span>
+			Contactez nous !</a>
 	</div>
 
-	<div id="menu"></div>
-	<h1>Derniers arrivages</h1>
+	<div class="container">
 
-	<div class="table">
+		<h2></h2>
+		<div
+			id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="{{asset('assets/images/articles/ratchet.jpeg') }}" alt="Los Angeles" style="width:100%;">
+				</div>
+
+				<div class="item">
+					<img src="{{asset('assets/images/articles/ogp.png') }}" alt="Chicago" style="width:100%;">
+				</div>
+
+				<div class="item">
+					<img src="{{asset('assets/images/articles/reviii.jpeg') }}" alt="New york" style="width:100%;">
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	<table id="nav" class="table table-hover">
+		<tbody>
+			<tr class="table-success">
+
+				<td>PLAYSTATION 5</td>
+				<td>NINTENDO SWITCH</td>
+				<td>PC GAMING</td>
+				<td>XBOX SERIES</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="menu">
+
+		<nav>
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pop Culture</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Rétro Gaming</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Revente</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="#">Nouveautés</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="row" id="col">
 
 		{% for game in games %}
-			<p>{{ game.title }}</p>
+			<div class="col-2">
+				<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+					<div class="card-header">
+						<center>{{ game.title }}</center>
+						<center>
+							<a href="{{ path('front_vue', {'id': game.id}) }}">Go !</a>
+						</center>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">
+							<center><img src="{{ vich_uploader_asset(game, 'imageFile') }}"/></center>
+						</h4>
+						<center>
+							<p class="card-text">{{ game.price }}€</p>
+						</center>
 
-			<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
-
-			<p>{{ game.price }}€
-				<a href="{{ path('games_show', {'id': game.id}) }}">Go !</a>
-			</p>
-
-
+					</div>
+				</div>
+			</div>
 		{% endfor %}
 	</div>
+	<center>
+		<div>
+			<ul class="pagination pagination-lg">
+				<li class="page-item disabled">
+					<a class="page-link" href="#">&laquo;</a>
+				</li>
+				<li class="page-item active">
+					<a class="page-link" href="#">1</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">2</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">3</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">4</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">5</a>
+				</li>
+				<li class="page-item">
+					<a class="page-link" href="#">&raquo;</a>
+				</li>
+			</ul>
+		</div>
+	</center>
 
-	<div id="footer"></div>
+	<!-- Footer -->
+	<footer
+		class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!-- Section: Social media -->
+
+			<!-- Section: Social media -->
+
+			<!-- Section: Form -->
+				<section class=""> <form
+					action="">
+					<!--Grid row-->
+					<div
+						class="row d-flex justify-content-center">
+						<!--Grid column-->
+						<div class="col-auto">
+							<p class="pt-2">
+								<strong>Inscrivez-vous à notre newsletter</strong>
+							</p>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div
+							class="col-md-5 col-12">
+							<!-- Email input -->
+							<div class="form-outline form-white mb-4">
+								<input type="email" id="form5Example2" class="form-control"/>
+								<label class="form-label" for="form5Example2">Votre adresse e-mail</label>
+							</div>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div
+							class="col-auto">
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-outline-light mb-4">
+								Souscrire
+							</button>
+						</div>
+						<!--Grid column-->
+					</div>
+					<!--Grid row-->
+				</form>
+			</section>
+			<!-- Section: Form -->
+
+			<!-- Section: Text -->
+			<section class="mb-4">
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+																																																																																																															        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+																																																																																																															        eum harum corrupti dicta, aliquam sequi voluptate quas.
+				</p>
+			</section>
+			<!-- Section: Text -->
+
+			<!-- Section: Links -->
+			<section
+				class="">
+				<!--Grid row-->
+				<div
+					class="row">
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+		</div>
+		<!-- Grid container -->
+
+
+	</footer>
+	<!-- Footer -->
+
 {% endblock %}

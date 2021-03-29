@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="games_index", methods={"GET"})
+     * @Route("/", name="front_index", methods={"GET"})
      */
     public function index(GamesRepository $gamesRepository, CategoryRepository $categoryRepository, PlateformRepository $plateformRepository): Response
     {
@@ -56,11 +56,11 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="games_show", methods={"GET"})
+     * @Route("/{id}", name="front_vue", methods={"GET"})
      */
     public function show(Games $game): Response
     {
-        return $this->render('games/show.html.twig', [
+        return $this->render('front/vue.html.twig', [
             'game' => $game,
         ]);
     }

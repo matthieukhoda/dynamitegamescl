@@ -1,0 +1,57 @@
+{% block title %}{% endblock %}
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
+
+{% block body %}
+	<h1>Jeux</h1>
+
+	<table class="table">
+		<tbody></tbody>
+	</tr>
+
+	<tr>
+		<th>Nom du jeu</th>
+		<td>{{ game.title }}</td>
+	</tr>
+	<tr>
+		<th>Description</th>
+		<td>{{ game.description }}</td>
+	</tr>
+	<tr>
+		<th>Prix</th>
+		<td>{{ game.price }}€</td>
+	</tr>
+
+	<tr>
+		<th>Console</th>
+		<td>
+			{% for plateform in game.plateforms %}
+
+				{{ plateform.plateforme }}<br>
+			{% endfor %}
+
+		</td>
+
+	</tr>
+	<tr>
+		<th>Catégorie</th>
+		<td>
+			{% for category in game.categories %}
+				{{ category.title }}<br>
+			{% endfor %}
+
+		</td>
+
+	</tr>
+	<tr>
+		<th>Jaquette</th>
+
+
+		<td>
+			<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
+
+		</td>
+
+
+	</tr>
+</tr></tr></tbody></table><a href="{{ path('front_index') }}">Retour au site</a>{% endblock %}
