@@ -92,11 +92,11 @@
 		</nav>
 	</div>
 
-	<div class="row" id="col">
 
+	<div class="row">
 		{% for game in games %}
 			<div class="col-2">
-				<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+				<div class="card text-white bg-success mb-3">
 					<div class="card-header">
 						<center>{{ game.title }}</center>
 						<center>
@@ -110,12 +110,37 @@
 						<center>
 							<p class="card-text">{{ game.price }}€</p>
 						</center>
-
 					</div>
 				</div>
 			</div>
 		{% endfor %}
 	</div>
+
+	<div id="hide">
+
+		{% for game in games %}
+			<div class="col-xs-">
+				<div class="card text-white bg-success mb-3">
+					<div class="card-header">
+						<center>{{ game.title }}</center>
+						<center>
+							<a href="{{ path('front_vue', {'id': game.id}) }}">Go !</a>
+						</center>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">
+							<center><img src="{{ vich_uploader_asset(game, 'imageFile') }}"/></center>
+						</h4>
+						<center>
+							<p class="card-text">{{ game.price }}€</p>
+						</center>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+
 	<center>
 		<div>
 			<ul class="pagination pagination-lg">
@@ -197,8 +222,8 @@
 			<section class="mb-4">
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-																																																																																																																				        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-																																																																																																																				        eum harum corrupti dicta, aliquam sequi voluptate quas.
+																																																																																																																																																																																																																																																						        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+																																																																																																																																																																																																																																																						        eum harum corrupti dicta, aliquam sequi voluptate quas.
 				</p>
 			</section>
 			<!-- Section: Text -->
