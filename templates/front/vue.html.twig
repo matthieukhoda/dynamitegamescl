@@ -1,57 +1,233 @@
 {% block title %}{% endblock %}
 <link rel="stylesheet" href="{{ asset('style.css') }}">
-<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}"> {% block stylesheets %}{% endblock %}
+<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% block stylesheets %}{% endblock %}
 
 {% block body %}
-	<h1>Jeux</h1>
 
-	<table class="table">
-		<tbody></tbody>
-	</tr>
+	<div id="header">
+		<img id="dglogo" src="{{asset('assets/images/articles/dglogo.png') }}"/>
 
-	<tr>
-		<th>Nom du jeu</th>
-		<td>{{ game.title }}</td>
-	</tr>
-	<tr>
-		<th>Description</th>
-		<td>{{ game.description }}</td>
-	</tr>
-	<tr>
-		<th>Prix</th>
-		<td>{{ game.price }}€</td>
-	</tr>
+		<form id="search" class="form-inline my-2 my-lg-0">
+			<input id="go" class="form-control mr-sm-2" type="text" placeholder="Que cherchez-vous ?">
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Go !</button>
+		</form>
+		<a href="#" id="mag" class="btn btn-lg btn-success">
+			<span class="glyphicon glyphicon-map-marker"></span>
+			Votre magasin de Clermont</a>
+		<a href="#" id="contact" class="btn btn-lg btn-success">
+			<span class="glyphicon glyphicon-send"></span>
+			Contactez nous !</a>
+	</div>
 
-	<tr>
-		<th>Console</th>
-		<td>
+	<div id="menu1">
+
+		<nav>
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pop Culture</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Rétro Gaming</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Revente</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="#">Nouveautés</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+
+	<h1 id="title">{{ game.title }}</h1>
+	<div id="price">
+		<p class="card-text">{{ game.price }}€</p>
+	</div>
+
+	<a href="#" id="rez" class="btn btn-lg btn-success">
+		<span class="glyphicon glyphicon-shopping-cart"></span>
+		Réservez ici</a>
+
+	<div id="console">
+		<p>Console :
 			{% for plateform in game.plateforms %}
-
-				{{ plateform.plateforme }}<br>
+				{{ plateform.plateforme }}
 			{% endfor %}
-
-		</td>
-
-	</tr>
-	<tr>
-		<th>Catégorie</th>
-		<td>
+		</p>
+	</div>
+	<div id="categorie">
+		<p>
+			Genre :
 			{% for category in game.categories %}
-				{{ category.title }}<br>
+				{{ category.title }}
 			{% endfor %}
+		</p>
+	</div>
 
-		</td>
-
-	</tr>
-	<tr>
-		<th>Jaquette</th>
-
-
-		<td>
-			<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
-
-		</td>
+	<div id="desc">
+		<p>
+			Description :
+			{{ game.description }}
+		</p>
+	</div>
 
 
-	</tr>
-</tr></tr></tbody></table><a href="{{ path('front_index') }}">Retour au site</a>{% endblock %}
+	<img id="vueimg" src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
+
+	<a id="back" href="{{ path('front_index') }}" class="btn btn-lg btn-info">
+		<span class="glyphicon glyphicon-step-backward">Retour au site</span>
+	</a>
+
+
+	<!-- Footer -->
+	<footer
+		id="footervue" class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!-- Section: Social media -->
+
+			<!-- Section: Social media -->
+
+			<!-- Section: Form -->
+				<section class=""> <form
+					action="">
+					<!--Grid row-->
+					<div
+						class="row d-flex justify-content-center">
+						<!--Grid column-->
+						<div class="col-auto">
+							<p class="pt-2">
+								<strong>Inscrivez-vous à notre newsletter</strong>
+							</p>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div
+							class="col-md-5 col-12">
+							<!-- Email input -->
+							<div class="form-outline form-white mb-4">
+								<input type="email" id="form5Example2" class="form-control"/>
+								<label class="form-label" for="form5Example2">Votre adresse e-mail</label>
+							</div>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div
+							class="col-auto">
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-outline-light mb-4">
+								Souscrire
+							</button>
+						</div>
+						<!--Grid column-->
+					</div>
+					<!--Grid row-->
+				</form>
+			</section>
+			<!-- Section: Form -->
+
+			<!-- Section: Text -->
+			<section class="mb-4">
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+																																																																																																																																																																																																																																																																										        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+																																																																																																																																																																																																																																																																										        eum harum corrupti dicta, aliquam sequi voluptate quas.
+				</p>
+			</section>
+			<!-- Section: Text -->
+
+			<!-- Section: Links -->
+			<section
+				class="">
+				<!--Grid row-->
+				<div
+					class="row">
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li>
+								<a href="#!" class="text-white">Link 1</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 2</a>
+							</li>
+							<li>
+								<a href="#!" class="text-white">Link 3</a>
+							</li>
+
+						</ul>
+					</div>
+					<!--Grid column-->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+		</div>
+		<!-- Grid container -->
+	</footer><!-- Footer -->{% endblock %}
