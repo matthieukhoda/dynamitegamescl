@@ -284,3 +284,16 @@ img {
     left: 40px;
   }
 }
+
+#titre {
+  color: #0fa704;
+  text-align: center;
+  font-size: 4em;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+}

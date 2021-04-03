@@ -18,4 +18,6 @@ front:
   path: /front
   controller: App\Controller\DefaultController::index
 
-
+contact:
+  path: /contact
+  controller: App\Controller\ContactController::index
