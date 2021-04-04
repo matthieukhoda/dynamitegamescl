@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 24 mars 2021 à 12:09
+-- Généré le : Dim 04 avr. 2021 à 16:03
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 7.4.14
 
@@ -63,6 +63,13 @@ INSERT INTO `category_games` (`category_id`, `games_id`) VALUES
 (2, 4),
 (2, 10),
 (2, 11),
+(2, 12),
+(2, 13),
+(2, 14),
+(2, 16),
+(4, 15),
+(4, 17),
+(4, 18),
 (5, 3);
 
 -- --------------------------------------------------------
@@ -127,10 +134,17 @@ CREATE TABLE `games` (
 
 INSERT INTO `games` (`id`, `title`, `description`, `price`, `stock`, `ean_code`, `image_name`, `updated_at`) VALUES
 (2, 'Final Fantasy X', 'J-RPG où vous incarnez Tidus jeune star du blitzball qui va voyager à travers le temps pour devenir le gardien de Yuna talentueuse invocatrice', 10, 5, 1313, 'ffx-603ff52934af9956501082.jpg', '2021-03-03 21:44:25'),
-(3, 'Metal Gear Solid', 'Jeu d\'infiltration', 10, 20, 13234, '51ioiivl-al._ac_-603ff3a72be32204152401.jpg', '2021-03-03 21:37:59'),
-(4, 'Dragon Quest VIII L\' Odyssée du roi maudit', 'Le dieu du j-RPG', 25, 3, 12, 'unnamed-603ff3bf563d9047609633.jpg', '2021-03-03 21:38:23'),
+(3, 'Metal Gear Solid 2', 'Jeu d\'infiltration', 10, 20, 13234, 'mgs2-606227252971d019716830.jpg', '2021-03-29 21:14:45'),
+(4, 'Dragon Quest VIII', 'Le dieu du j-RPG', 25, 3, 12, 'unnamed-603ff3bf563d9047609633-6062268351c3d853998239.jpg', '2021-03-29 21:12:03'),
 (10, 'Nier Automata', 'Jeu de rôle japonais édité par Square Enix et développé par Platinum Games. Le dernier titre du génial Yoko Tarô!', 30, 2, NULL, 'nier-automata-cover-art-604b5b8f52b61560549170.jpg', '2021-03-12 13:16:15'),
-(11, 'Star Ocean : Till the end of Time', 'Jeu de rôle développé par Tri-Ace', 25, 3, NULL, 'starocean-605a5975c6792617574956.jpg', '2021-03-23 22:11:17');
+(11, 'Star Ocean', 'Jeu de rôle développé par Tri-Ace', 25, 3, NULL, 'starocean-605a5975c6792617574956-606226a9ce5e1630701384.jpg', '2021-03-29 21:12:41'),
+(12, 'God Eater 3', 'Jeu d\'action développé par Namco Bandai', 25, 1, NULL, 'godeater-605fa35090767971414637.jpg', '2021-03-27 22:27:44'),
+(13, 'Shadow Hearts Covenants', 'Suite du 1er RPG sortit en 2001', 15, 1, NULL, 'shadow-60622a3687e12349167290.jpg', '2021-03-29 21:27:50'),
+(14, 'Digital Devil Saga', 'RPG par les créateurs de Persona', 25, 2, NULL, 'dds-60622a9f75e41933092310.jpg', '2021-03-29 21:29:35'),
+(15, 'Uncharted 4', 'Dernier volet des aventures de Nathan Drake', 20, 4, NULL, 'uncharted-60622afa70e74286738273.jpg', '2021-03-29 21:31:06'),
+(16, 'Final Fantasy XV', '15ème opus de la franchise', 15, 3, NULL, 'ff15-60622b6fd7bf1970663869.jpg', '2021-03-29 21:33:03'),
+(17, 'Gravity Rush 2', 'La nouvelle aventure de Kat !', 25, 5, NULL, 'gravity-60622bcc3bb24464518203.jpg', '2021-03-29 21:34:36'),
+(18, 'Zone of the Enders 2', 'Suite du jeu d\'action frénétique', 15, 2, NULL, 'zoe2-60622c87dcbd6873709249.jpg', '2021-03-29 21:37:43');
 
 -- --------------------------------------------------------
 
@@ -180,10 +194,17 @@ CREATE TABLE `plateform_games` (
 
 INSERT INTO `plateform_games` (`plateform_id`, `games_id`) VALUES
 (2, 10),
+(2, 12),
+(2, 15),
+(2, 16),
+(2, 17),
 (4, 2),
+(4, 3),
 (4, 4),
 (4, 11),
-(5, 3);
+(4, 13),
+(4, 14),
+(4, 18);
 
 -- --------------------------------------------------------
 
@@ -288,7 +309,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `new_controller`
@@ -306,7 +327,7 @@ ALTER TABLE `plateform`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
