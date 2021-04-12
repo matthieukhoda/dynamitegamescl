@@ -1,0 +1,20 @@
+body {
+  padding: 2%;
+}
+
+table {
+  max-width: 100%;
+}
+
+thead {
+  color: blueviolet;
+}
+
+h1 {
+  text-align: center;
+}
+
+#create {
+  height: 10vh;
+  width: 6vw;
+}

@@ -4,53 +4,52 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Jeux</h1>
+	<h1>Liste des jeux</h1>
 
 	<table class="table">
 		<thead>
 			<tr>
-
 				<th>Tous les jeux</th>
-				<th>Description</th>
+				<th>Descriptions</th>
 				<th>Prix</th>
 				<th>Stock</th>
-				<th>Plateforme</th>
-				<th>Catégorie</th>
-
+				<th>Plateformes</th>
+				<th>Catégories</th>
+				<th>Actions</th>
+				<th></th>
 			</tr>
 		</thead>
-		<tbody>
-			<a href="{{ path('games_new') }}">Ajouter un jeu</a>
+
+	<tbody>
+		<h2><a href="{{ path('games_new') }}">Ajouter un jeu</a><img id="create" src="{{asset('assets/images/articles/create.png') }}"/></h2>
 			{% for game in games %}
 				<tr>
 					<td>{{ game.title }}</td>
 					<td>{{ game.description }}</td>
-					<td>{{ game.price }}</td>
+					<td>{{ game.price }}€</td>
 					<td>{{ game.stock }}</td>
 					<td>
 						{% for plateform in game.plateforms %}
-
 							{{ plateform.plateforme }}<br>
 						{% endfor %}
-
 					</td>
-
 					<td>
 						{% for category in game.categories %}
 							{{ category.title }}<br>
 						{% endfor %}
-
 					</td>
-				</tr>
-				<td>
-					<a href="{{ path('games_show', {'id': game.id}) }}">Voir</a>
-					<a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a>
-				</td>
-			</tbody>
+
+					<td>
+						<button type="button" class="btn btn-outline-warning"><a href="{{ path('games_show', {'id': game.id}) }}">Voir</a></button>
+					</td>
+					<td>	
+						<button type="button" class="btn btn-outline-success"><a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a></button>
+					</td>
+					{% else %}
+					<tr>
+					<td colspan="7">no records found</td>
+					</tr>
+					{% endfor %}
 		</tbody>
-	</tr>
-{% else %}
-	<tr>
-		<td colspan="7">no records found</td>
-	</tr>
-{% endfor %}</tbody></table>{% endblock %}
+    </table>
+{% endblock %}
