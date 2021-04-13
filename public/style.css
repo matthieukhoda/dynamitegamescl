@@ -82,6 +82,12 @@ img {
   }
 }
 
+.pagination {
+  display: block;
+  margin: 0 auto;
+  font-size: 30px;
+}
+
 #footer {
   background-color: #0fa704;
   text-align: center;

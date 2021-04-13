@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/games")
@@ -19,13 +20,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class GamesController extends AbstractController
 {
     /**
-     * @Route("/", name="games_index", methods={"GET"})
+     * @Route("/", name="games_index", methods={"POST"})
      */
-    public function index(GamesRepository $gamesRepository, CategoryRepository $categoryRepository, PlateformRepository $plateformRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator, GamesRepository $gamesRepository, CategoryRepository $categoryRepository, PlateformRepository $plateformRepository): Response
     {
         $games = $gamesRepository->findAll();
+        $gamepage = $paginator->paginate(
+            $games, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            6 // Nombre de résultats par page
+        );
 
         return $this->render('games/index.html.twig',  [
+            'gamepage' => $gamepage,
             'games' => $games,
 
         ]);

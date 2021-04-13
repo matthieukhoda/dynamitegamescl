@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-{% block javascripts %}<script src="{{ asset('script.js') }}"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('script.js') }}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
 {% block body %}
 
 
@@ -16,16 +17,16 @@
 
 		<form id="search" class="form-inline my-2 my-lg-0">
 			<input id="myInput" type="text" placeholder="Que cherchez-vous?">
-						<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".card").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
+			<script>
+				$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$(".card").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
-</script>
+});
+});
+			</script>
 		</form>
 		<a href="https://fr-fr.facebook.com/pg/Dynamite-Games-Clermont-Fd-16-rue-saint-esprit-182041461845273/about/?ref=page_internal" target="_blank" id="mag" class="btn btn-lg btn-success">
 			<span class="glyphicon glyphicon-map-marker"></span>
@@ -107,7 +108,7 @@ $(document).ready(function(){
 
 
 	<div class="row">
-		{% for game in games %}
+		{% for game in gamepage %}
 			<div class="col-2">
 				<div class="card text-white bg-success mb-3">
 					<div class="card-header">
@@ -127,6 +128,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 		{% endfor %}
+
 	</div>
 
 	<div id="hide">
@@ -155,30 +157,8 @@ $(document).ready(function(){
 	</div>
 
 	<center>
-		<div>
-			<ul class="pagination pagination-lg">
-				<li class="page-item disabled">
-					<a class="page-link" href="#">&laquo;</a>
-				</li>
-				<li class="page-item active">
-					<a class="page-link" href="#">1</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="#">2</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="#">3</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="#">4</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="#">5</a>
-				</li>
-				<li class="page-item">
-					<a class="page-link" href="#">&raquo;</a>
-				</li>
-			</ul>
+		<div class="pagination">
+			{{ knp_pagination_render(gamepage) }}
 		</div>
 	</center>
 
@@ -234,8 +214,8 @@ $(document).ready(function(){
 			<section class="mb-4">
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-																																																																																																																																																																																																																																																																																																													        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-																																																																																																																																																																																																																																																																																																													        eum harum corrupti dicta, aliquam sequi voluptate quas.
+																																																																																																																																																																																																																																																																																																																																																					        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+																																																																																																																																																																																																																																																																																																																																																					        eum harum corrupti dicta, aliquam sequi voluptate quas.
 				</p>
 			</section>
 			<!-- Section: Text -->
@@ -256,7 +236,7 @@ $(document).ready(function(){
 					<!--Grid column-->
 					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 						<h5 class="text-uppercase">CGU</h5>
-						
+
 					</div>
 					<!--Grid column-->
 

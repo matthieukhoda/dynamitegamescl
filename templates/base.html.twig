@@ -9,50 +9,73 @@
 		</title>
 		<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('style1.css') }}"> {% block stylesheets %}{% endblock %}
-		{% block javascripts %}<script src="{{ asset('script.js') }}"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		{% block javascripts %}
+			<script src="{{ asset('script.js') }}"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		{% endblock %}
-		</head>
-		<body>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-				<a class="navbar-brand" href="/home">Dynamite Games</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand" href="/home">Dynamite Games</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-				<div class="collapse navbar-collapse" id="navbarColor01">
-					<ul class="navbar-nav mr-auto">
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav mr-auto">
 
-						<li class="nav-item">
-							<a class="nav-link" href="/games">Liste des jeux</a>
+					<li class="nav-item">
+						<a class="nav-link" href="/games">Liste des jeux</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/plateform">Les consoles</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/category">Catégories</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" target="_blank" href="/front">Le site</a>
+					</li>
+					{% if is_granted('ROLE_USER') %}
+						<li>
+							<button type="button" class="btn btn-outline-danger">
+								<a href="{{path('games_index')}}">Admin</a>
+							</button>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/plateform">Les consoles</a>
+					{% endif %}
+
+					{% if is_granted('ROLE_USER') %}
+						<li>
+							<button type="button" class="btn btn-outline-danger">
+								<a href={{path('logout')}}>Déconnexion</a>
+							</button>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/category">Catégories</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/front">Le site</a>
+					{% else %}
+						<li>
+							<button type="button" class="btn btn-outline-danger">
+								<a href="{{path('security_login')}}">Connexion</a>
+							</button>
 						</li>
 
+					{% endif %}
 
-					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<input id="myInput" type="text" placeholder="Search..">
-						<script>
-						$(document).ready(function(){
-						$("#myInput").on("keyup", function() {
-							var value = $(this).val().toLowerCase();
-							$("#myTable tr").filter(function() {
-							$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-							});
-						});
-						});
-						</script>
-					</form>
-				</div>
-			</nav>
-			{% block body %}{% endblock %}
-		</body>
-	</html>
+
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input id="myInput" type="text" placeholder="Search..">
+					<script>
+						$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});
+					</script>
+				</form>
+			</div>
+		</nav>
+		{% block body %}{% endblock %}
+	</body>
+</html>
