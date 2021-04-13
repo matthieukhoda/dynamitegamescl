@@ -2,7 +2,9 @@
 
 {% block title %}Games index
 {% endblock %}
-
+ {% block stylesheets %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
 {% block body %}
 	<h1>Liste des jeux</h1>
 
@@ -20,7 +22,7 @@
 			</tr>
 		</thead>
 
-	<tbody>
+	<tbody id="myTable">
 		<h2><a href="{{ path('games_new') }}">Ajouter un jeu</a><img id="create" src="{{asset('assets/images/articles/create.png') }}"/></h2>
 			{% for game in games %}
 				<tr>

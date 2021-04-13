@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Games;
 use App\Entity\Plateform;
+use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -24,7 +25,10 @@ class GamesType extends AbstractType
             ->add('description', TextareaType::class, ['label' => 'Description'])
             ->add('price', TextType::class, ['label' => 'Prix'])
             ->add('stock', TextType::class, ['label' => 'Stock'])
-            ->add('imageFile', VichImageType::class,  ['label' => "Couverture"])
+            ->add('imageFile', VichImageType::class,  [
+                'required' => false,
+                'label' => "Couverture"
+            ])
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'title',

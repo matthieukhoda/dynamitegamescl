@@ -10,6 +10,10 @@ img {
   height: 160px;
 }
 
+#myInput {
+  width: 300px;
+}
+
 #dglogo {
   width: 40%;
   height: 150px;
@@ -50,7 +54,7 @@ img {
 #mag {
   position: relative;
   top: 10px;
-  left: 28%;
+  left: 22%;
 }
 
 @media screen and (max-width: 780px) {
@@ -64,7 +68,7 @@ img {
 #contact {
   position: relative;
   top: 10px;
-  left: 28%;
+  left: 23%;
 }
 @media screen and (max-width: 780px) {
   #contact {
