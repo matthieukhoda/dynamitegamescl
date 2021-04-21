@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Plateform;
 use App\Form\PlateformType;
 use App\Repository\PlateformRepository;
+use App\Repository\GamesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,7 +84,7 @@ class PlateformController extends AbstractController
      */
     public function delete(Request $request, Plateform $plateform): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$plateform->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $plateform->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($plateform);
             $entityManager->flush();

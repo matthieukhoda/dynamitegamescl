@@ -2,12 +2,11 @@
 
 {% block title %}Games index
 {% endblock %}
- {% block stylesheets %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{% endblock %}
+{% block stylesheets %}{% endblock %}
 {% block body %}
-	<h1>Liste des jeux</h1>
 
+	{# Tableau de listing des jeux #}
+	<h1>Liste des jeux</h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -21,9 +20,13 @@
 				<th></th>
 			</tr>
 		</thead>
-
-	<tbody id="myTable">
-		<h2><a href="{{ path('games_new') }}">Ajouter un jeu</a><img id="create" src="{{asset('assets/images/articles/create.png') }}"/></h2>
+		{# Informations du tableau #}
+		<tbody id="myTable">
+			<button type="button" class="btn btn-outline-success">
+				<h2>
+					<a href="{{ path('games_new') }}">Ajouter un jeu</a><img id="create" src="{{asset('assets/images/articles/create.png') }}"/></h2>
+			</button>
+			{# Début de la boucle #}
 			{% for game in games %}
 				<tr>
 					<td>{{ game.title }}</td>
@@ -31,8 +34,8 @@
 					<td>{{ game.price }}€</td>
 					<td>{{ game.stock }}</td>
 					<td>
-						{% for plateform in game.plateforms %}
-							{{ plateform.plateforme }}<br>
+						{% for id in game.plateforms  %}
+							{{ id.plateforme}}<br>
 						{% endfor %}
 					</td>
 					<td>
@@ -42,16 +45,21 @@
 					</td>
 
 					<td>
-						<button type="button" class="btn btn-outline-warning"><a href="{{ path('games_show', {'id': game.id}) }}">Voir</a></button>
+						<button type="button" class="btn btn-outline-warning">
+							<a href="{{ path('games_show', {'id': game.id}) }}">Voir</a>
+						</button>
 					</td>
-					<td>	
-						<button type="button" class="btn btn-outline-success"><a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a></button>
+					<td>
+						<button type="button" class="btn btn-outline-success">
+							<a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a>
+						</button>
 					</td>
-					{% else %}
+				{% else %}
 					<tr>
-					<td colspan="7">no records found</td>
+						<td colspan="7">no records found</td>
 					</tr>
-					{% endfor %}
+				{% endfor %}
+			</tbody>
 		</tbody>
-    </table>
+	</table>
 {% endblock %}

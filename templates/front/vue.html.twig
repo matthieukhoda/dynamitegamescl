@@ -8,8 +8,9 @@
 
 {% block body %}
 
+	{# Header #}
 	<div id="header">
-		<img id="dglogo" src="{{asset('assets/images/articles/dglogo.png') }}"/>
+		<a href="/front"><img id="dglogo" src="{{asset('assets/images/articles/dglogo.png') }}"/></a>
 
 		<form id="research" class="form-inline my-2 my-lg-0">
 			<input id="go" class="form-control mr-sm-2" type="text" placeholder="Que cherchez-vous ?">
@@ -18,41 +19,42 @@
 		<a href="https://fr-fr.facebook.com/pg/Dynamite-Games-Clermont-Fd-16-rue-saint-esprit-182041461845273/about/?ref=page_internal" target="_blank" id="mag" class="btn btn-lg btn-success">
 			<span class="glyphicon glyphicon-map-marker"></span>
 			Votre magasin de Clermont</a>
-		<a href="#" id="contact" class="btn btn-lg btn-success">
+		<a href="/contact" target="_blank" id="contact" class="btn btn-lg btn-success">
 			<span class="glyphicon glyphicon-send"></span>
 			Contactez nous !</a>
 	</div>
 
+	{# Menu #}
 	<div id="menu1">
 
 		<nav>
 			<ul class="nav flex-column">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Pop Culture</a>
+					<a class="nav-link" href="#">Lorem Ipsum</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Rétro Gaming</a>
+					<a class="nav-link" href="#">Lorem Ipsum</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Revente</a>
+					<a class="nav-link" href="#">Lorem Ipsum</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link " href="#">Nouveautés</a>
+					<a class="nav-link " href="#">Lorem Ipsum</a>
 				</li>
 			</ul>
 		</nav>
 	</div>
 
-
+	{# Game Product #}
 	<h1 id="title">{{ game.title }}</h1>
 	<div id="price">
 		<p class="card-text">{{ game.price }}€</p>
 	</div>
-
-	<a href="#" id="rez" class="btn btn-lg btn-success">
+	{# Reservation #}
+	<a href="/contact" target="_blank" id="rez" class="btn btn-lg btn-success">
 		<span class="glyphicon glyphicon-shopping-cart"></span>
 		Réservez ici</a>
-
+	{# Game information #}
 	<div id="console">
 		<p>Console :
 			{% for plateform in game.plateforms %}
@@ -68,17 +70,17 @@
 			{% endfor %}
 		</p>
 	</div>
-
 	<div id="desc">
 		<p>
 			Description :
 			{{ game.description }}
 		</p>
 	</div>
+	{# Game image #}
+	<img
+	id="vueimg" src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
 
-
-	<img id="vueimg" src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
-
+	{# Button come back #}
 	<a id="back" href="{{ path('front_index') }}" class="btn btn-lg btn-info">
 		<span class="glyphicon glyphicon-step-backward">Retour à l'accueil</span>
 	</a>
@@ -102,7 +104,7 @@
 						<!--Grid column-->
 						<div class="col-auto">
 							<p class="pt-2">
-								<strong>Inscrivez-vous à notre newsletter</strong>
+								<strong>Lorem ipsum</strong>
 							</p>
 						</div>
 						<!--Grid column-->
@@ -113,7 +115,7 @@
 							<!-- Email input -->
 							<div class="form-outline form-white mb-4">
 								<input type="email" id="form5Example2" class="form-control"/>
-								<label class="form-label" for="form5Example2">Votre adresse e-mail</label>
+								<label class="form-label" for="form5Example2">Lorem ipsum</label>
 							</div>
 						</div>
 						<!--Grid column-->
@@ -123,7 +125,7 @@
 							class="col-auto">
 							<!-- Submit button -->
 							<button type="submit" class="btn btn-outline-light mb-4">
-								Souscrire
+								Lorem
 							</button>
 						</div>
 						<!--Grid column-->
@@ -137,8 +139,8 @@
 			<section class="mb-4">
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-																																																																																																																																																																																																																																																																																									        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-																																																																																																																																																																																																																																																																																									        eum harum corrupti dicta, aliquam sequi voluptate quas.
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		        eum harum corrupti dicta, aliquam sequi voluptate quas.
 				</p>
 			</section>
 			<!-- Section: Text -->
@@ -151,33 +153,39 @@
 					class="row">
 					<!--Grid column-->
 					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">Mentions légales</h5>
+						<a href="https://www.legalplace.fr/guides/mentions-legales/" target="_blank">
+							<h5 class="text-uppercase">Mentions légales</h5>
+						</a>
 
-					
 					</div>
 					<!--Grid column-->
 
 					<!--Grid column-->
 					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">CGU</h5>
+						<a href="https://fr.wikipedia.org/wiki/Conditions_g%C3%A9n%C3%A9rales_d%27utilisation" target="_blank">
+							<h5 class="text-uppercase">CGU</h5>
+						</a>
 
-					
+
 					</div>
 					<!--Grid column-->
 
 					<!--Grid column-->
 					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">La franchise</h5>
+						<a href="https://www.dynamite-games.com/" target="_blank">
+							<h5 class="text-uppercase">La franchise</h5>
+						</a>
 
-					
+
 					</div>
 					<!--Grid column-->
 
 					<!--Grid column-->
 					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 class="text-uppercase">A propos</h5>
+						<a href="https://www.dynamite-games.com/index.php?page=mag_dev&id=97" target="_blank">
+							<h5 class="text-uppercase">A propos</h5>
+						</a>
 
-					
 					</div>
 					<!--Grid column-->
 				</div>
@@ -186,6 +194,6 @@
 			<!-- Section: Links -->
 		</div>
 		<!-- Grid container -->
-	</footer><!-- Footer -->
-	
-	{% endblock %}
+	</footer>
+
+{% endblock %}

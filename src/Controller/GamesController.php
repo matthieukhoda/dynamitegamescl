@@ -44,14 +44,17 @@ class GamesController extends AbstractController
     public function new(Request $request): Response
     {
         $game = new Games();
-        $form = $this->createForm(GamesType::class, $game);
-        $form->handleRequest($request);
+        $form = $this->createForm(GamesType::class, $game); // crée une instance de la classe Form à partir de la classe
+        // me en utilisant comme données de départ l’instance de la classe Game $games.
+        $form->handleRequest($request); // permet de gérer le traitement de la saisie du formulaire
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) { // qui permet de savoir si le formulaire a été saisi et
+            // si de plus les règles de validations sont vérifiées alors l’enregistrement sera ajouté à la base de données 
+            //avant de rediriger la requête vers un affichage de la liste des locations.
             $game->setUpdatedAt(new DateTime());
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($game);
-            $entityManager->flush();
+            $entityManager->persist($game); //les données doivent persister
+            $entityManager->flush(); //ok maintenant tu peux insérer les données
 
             return $this->redirectToRoute('games_index');
         }

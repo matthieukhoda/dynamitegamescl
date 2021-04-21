@@ -17,7 +17,6 @@ class ContactController extends AbstractController
     public function index(Request $request, MailerInterface $mailer)
     {
         $form = $this->createForm(ContactType::class);
-
         $form->handleRequest($request);
 
 
@@ -26,28 +25,23 @@ class ContactController extends AbstractController
             $contactFormData = $form->getData();
 
             $message = (new Email())
-                ->from($contactFormData['email'])
+                ->from('matthieu.khodabuccus1@gmail.com')
                 ->to('matthieu.khodabuccus1@gmail.com')
-                ->subject('You got mail');
-            // ->text(
-            //     'Sender : ' . $contactFormData['email'] . \PHP_EOL .
-            //         $contactFormData['Message'],
-            //     'text/plain'
-            // );
-            // $mailer->send($message);
+                ->subject('vous avez reçu un email')
+                ->text(
+                    'Sender : ' . $contactFormData['email'] . \PHP_EOL .
+                        $contactFormData['message'],
+                    'text/plain'
+                );
+            $mailer->send($message);
 
-
-
-
-            $this->addFlash('success', 'Your message has been sent');
+            $this->addFlash('success', 'Vore message a été envoyé');
 
             return $this->redirectToRoute('contact');
         }
 
-
-
         return $this->render('contact/index.html.twig', [
-            'our_form' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 }

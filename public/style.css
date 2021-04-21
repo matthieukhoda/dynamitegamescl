@@ -311,3 +311,17 @@ img {
   width: auto;
   height: auto;
 }
+
+#form {
+  width: 50%;
+}
+
+#basch {
+  float: right;
+  height: 100vh;
+  width: 40vw;
+}
+
+#vaan {
+  padding: 1%;
+}

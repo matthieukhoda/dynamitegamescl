@@ -63,6 +63,7 @@ class Plateform
     {
         if (!$this->games->contains($game)) {
             $this->games[] = $game;
+            $game->addPlateform($this);
         }
 
         return $this;

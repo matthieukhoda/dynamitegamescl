@@ -7,55 +7,58 @@
 	<h1>Jeux</h1>
 
 	<table class="table">
-		<tbody></tbody>
+		<tr>
+			<th>Nom du jeu</th>
+			<td>{{ game.title }}</td>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<td>{{ game.description }}</td>
+		</tr>
+		<tr>
+			<th>Prix</th>
+			<td>{{ game.price }}€</td>
+		</tr>
+		<tr>
+			<th>Stock</th>
+			<td>{{ game.stock }}</td>
+		</tr>
+		<tr>
+			<th>Console</th>
+			<td>
+				{% for plateform in game.plateforms %}
+					{{ plateform.plateforme }}<br>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<th>Catégorie</th>
+			<td>
+				{% for category in game.categories %}
+					{{ category.title }}<br>
+				{% endfor %}
+
+			</td>
+		</tr>
+		<tr>
+			<th>Jaquette</th>
+			<td>
+				<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
+			</td>
+		</tr>
 	</tr>
+</table>
+<th>
+	<button type="button" class="btn btn-outline-success">
+		<a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a>
+	</button>
+</th>
+<th>
+	<button type="button" class="btn btn-outline-warning">
+		<a href="{{ path('games_index') }}">Retour à la liste</a>
+	</button>
+</th>
 
-	<tr>
-		<th>Nom du jeu</th>
-		<td>{{ game.title }}</td>
-	</tr>
-	<tr>
-		<th>Description</th>
-		<td>{{ game.description }}</td>
-	</tr>
-	<tr>
-		<th>Prix</th>
-		<td>{{ game.price }}</td>
-	</tr>
-	<tr>
-		<th>Stock</th>
-		<td>{{ game.stock }}</td>
-	</tr>
-	<tr>
-		<th>Console</th>
-		<td>
-			{% for plateform in game.plateforms %}
-
-				{{ plateform.plateforme }}<br>
-			{% endfor %}
-
-		</td>
-
-	</tr>
-	<tr>
-		<th>Catégorie</th>
-		<td>
-			{% for category in game.categories %}
-				{{ category.title }}<br>
-			{% endfor %}
-
-		</td>
-
-	</tr>
-	<tr>
-		<th>Jaquette</th>
-
-
-		<td>
-			<img src="{{ vich_uploader_asset(game, 'imageFile') }}"/>
-
-		</td>
-
-
-	</tr>
-</tr></tr></tbody></table><a href="{{ path('games_index') }}">Retour à la liste</a><br><a href="{{ path('games_edit', {'id': game.id}) }}">Editer</a>{{ include('games/_delete_form.html.twig') }}{% endblock %}
+<th>
+	{{ include('games/_delete_form.html.twig') }}
+</th>{% endblock %}

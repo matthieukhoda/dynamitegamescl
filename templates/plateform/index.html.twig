@@ -5,24 +5,32 @@
 
 {% block body %}
 	<h1>Les consoles</h1>
-	<a href="{{ path('plateform_new') }}">Créer nouvelle console</a>
-
+	<button type="button" class="btn btn-outline-success">
+		<h2>
+			<a href="{{ path('plateform_new') }}">Créer nouvelle console</a><img id="create" src="{{asset('assets/images/articles/create.png') }}"/>
+		</h2>
+	</button>
 	<table class="table">
 		<thead>
 			<tr>
-				{# <th>Id</th> #}
+
 				<th>Toutes les plateformes</th>
-				<th>actions</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for plateform in plateforms %}
 				<tr>
-					{# <td>{{ plateform.id }}</td> #}
+
 					<td>{{ plateform.plateforme }}</td>
+
 					<td>
-						<a href="{{ path('plateform_show', {'id': plateform.id}) }}">Voir</a>
-						<a href="{{ path('plateform_edit', {'id': plateform.id}) }}">Editer</a>
+						<button type="button" class="btn btn-outline-warning">
+							<a href="{{ path('plateform_show', {'id': plateform.id}) }}">Voir</a>
+						</button>
+						<button type="button" class="btn btn-outline-success">
+							<a href="{{ path('plateform_edit', {'id': plateform.id}) }}">Editer</a>
+						</button>
 					</td>
 				</tr>
 			{% else %}
@@ -31,7 +39,5 @@
 				</tr>
 			{% endfor %}
 		</tbody>
-	</table>
-
-
-{% endblock %}
+	</tbody>
+</table>{% endblock %}
